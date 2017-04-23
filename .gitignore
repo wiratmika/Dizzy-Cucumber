@@ -1,5 +1,6 @@
 *
 
 !.gitignore
+!akucintaanum.m
 !michalewicz.m
 !powell.m
