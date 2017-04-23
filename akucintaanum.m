@@ -18,8 +18,9 @@ function [x] = michalewiczGenerator(t)
   end
 end
 
-tol = 10 ^ -12;
-out = lbfgs(@(x) michalewicz(x), michalewiczGenerator(1), 'StopTol', tol)
+tol = 10 ^ -4;
+% out = lbfgs(@(x) michalewicz(x), michalewiczGenerator(1), 'StopTol', tol)
+out = tn(@(x) michalewicz(x), michalewiczGenerator(1), 'CGTolType', 'fixed', 'CGTol', tol, 'CGSolver', 'pcg')
 
 % INSTRUKSI:
 % 1. Kalo mau ganti panjang n-nya, ganti parameter michalewiczGenerator
