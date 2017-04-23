@@ -9,6 +9,27 @@ function [xi] = generateX(i)
   end
 end
 
+function [yi] = generateY(i)
+  if (mod(i, 4) == 0)
+    yi = 3;
+  elseif (mod(i, 4) == 1)
+    yi = 3;
+  elseif (mod(i, 4) == 2)
+    yi = -1
+  else
+    yi = 0
+  end
+end
+
+function [y] = powellGenerator(t)
+  n = 8 ^ t;
+  y = zeros(n, 1);
+
+  for i = 1:n
+    y(i) = generateY(i);
+  end
+end
+
 function [x] = michalewiczGenerator(t)
   n = 8 ^ t;
   x = zeros(n, 1);
@@ -19,8 +40,8 @@ function [x] = michalewiczGenerator(t)
 end
 
 tol = 10 ^ -4;
-% out = lbfgs(@(x) michalewicz(x), michalewiczGenerator(1), 'StopTol', tol)
-% out = ncg(@(x) powell(x), michalewiczGenerator(2), 'StopTol', tol)
+% out = ncg(@(x) michalewicz(x), michalewiczGenerator(4), 'StopTol', tol)
+out = lbfgs(@(x) powell(x), powellGenerator(1), 'StopTol', tol)
 % out = tn(@(x) michalewicz(x), michalewiczGenerator(1), 'CGTolType', 'fixed', 'CGTol', tol, 'CGSolver', 'pcg')
 % out = tn(@(x) michalewicz(x), michalewiczGenerator(1), 'CGTolType', 'fixed', 'CGTol', tol, 'CGSolver', 'pcg')
 
