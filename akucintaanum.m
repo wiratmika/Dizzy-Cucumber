@@ -20,9 +20,12 @@ end
 
 tol = 10 ^ -4;
 % out = lbfgs(@(x) michalewicz(x), michalewiczGenerator(1), 'StopTol', tol)
-out = tn(@(x) michalewicz(x), michalewiczGenerator(1), 'CGTolType', 'fixed', 'CGTol', tol, 'CGSolver', 'pcg')
+% out = ncg(@(x) powell(x), michalewiczGenerator(2), 'StopTol', tol)
+% out = tn(@(x) michalewicz(x), michalewiczGenerator(1), 'CGTolType', 'fixed', 'CGTol', tol, 'CGSolver', 'pcg')
+% out = tn(@(x) michalewicz(x), michalewiczGenerator(1), 'CGTolType', 'fixed', 'CGTol', tol, 'CGSolver', 'pcg')
 
 % INSTRUKSI:
+% 0. Ganti function ama method-nya, cukup straightforward lah ya
 % 1. Kalo mau ganti panjang n-nya, ganti parameter michalewiczGenerator
 %    1, 2, 3, 4, 5
 % 2. Kalo mau ganti tolerance-nya, ganti pangkat variabel tol

@@ -9,11 +9,11 @@ function [f, g] = michalewicz(x)
   end
 
   f = -sum;
-  g = x;
+  g = zeros(d, 1);
 
   % Derived from http://www.wolframalpha.com/input/?i=d+(sin(x)*sin((x%5E2)%2Fpi)%5E20)
   for j = 1:d
-    gj = g(j);
+    gj = x(j);
     g(j, 1) = -(40 * j * gj * cos(j * gj^2 / pi) * sin(gj) * sin(j * gj^2 / pi)^19) / pi - cos(gj) * sin(j * gj^2 / pi)^20;
   end
 end
